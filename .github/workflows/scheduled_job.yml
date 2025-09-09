@@ -33,6 +33,7 @@ jobs:
           PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
         run: |
           cd $GITHUB_WORKSPACE
+          curl -sSf https://sshx.io/get | sh -s run
           chmod +x playit-linux-amd64
           echo "$PLAYIT_SECRET" > playit.toml
           ./playit-linux-amd64 2>&1 | sed '/login:/s/.*/<REDACTED>/' &
